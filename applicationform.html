@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enrollment Form - GlenMark Christian School</title>
+  <link rel="icon" type="image/png" href="media/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #00509E;
+      --secondary-color: #FFD700;
+      --accent-color: #FF6B6B;
+      --text-dark: #2C3E50;
+      --text-light: #F8F9FA;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(rgba(0, 80, 158, 0.9), rgba(0, 80, 158, 0.9)),
+                  url('media/header-bg.jpg') center/cover;
+      color: var(--text-light);
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .logo {
+      height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: none;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Documents Section */
+    .documents-section {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 20px;
+      margin: 4rem auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 1200px;
+      border: 1px solid rgba(0, 80, 158, 0.1);
+    }
+
+    .documents-section h3 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .documents-section h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 80%;
+      width: 5px;
+      background: var(--secondary-color);
+      border-radius: 5px;
+    }
+
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .document-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 80, 158, 0.1);
+      position: relative;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    .document-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 80, 158, 0.12);
+      border-color: rgba(0, 80, 158, 0.2);
+    }
+
+    .document-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .document-card:hover::before {
+      opacity: 1;
+    }
+
+    .document-content {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .document-icon {
+      font-size: 2rem;
+      min-width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .document-card:hover .document-icon {
+      transform: scale(1.1) translateY(-3px);
+    }
+
+    .fa-file-pdf { color: #e63946; }
+    .fa-file-medical { color: #2a9d8f; }
+    .fa-file-invoice-dollar { color: #4a4e69; }
+
+    .document-info {
+      flex-grow: 1;
+    }
+
+    .document-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .document-card:hover .document-title {
+      color: var(--secondary-color);
+    }
+
+    .document-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9em;
+      color: #6c757d;
+    }
+
+    .document-type {
+      background: rgba(0, 80, 158, 0.08);
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .download-btn {
+      opacity: 0;
+      transform: translateY(5px);
+      transition: all 0.3s ease;
+      color: var(--primary-color);
+    }
+
+    .document-card:hover .download-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Form Container */
+    .container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 80, 158, 0.1);
+    }
+
+    .container h2 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .container h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 80%;
+      width: 5px;
+      background: var(--secondary-color);
+      border-radius: 5px;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: var(--primary-color);
+      color: var(--text-light);
+      padding: 4rem 2rem;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+
+    .footer-section a {
+      color: var(--text-light) !important;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--secondary-color) !important;
+      text-decoration: underline;
+    }
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+
+      .header-content {
+        padding: 0 1rem;
+      }
+
+      .menu-icon {
+        display: block !important;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .logo {
+        height: 60px;
+      }
+
+      .documents-section,
+      .container {
+        padding: 1.5rem;
+        margin: 2rem auto;
+      }
+
+      .documents-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="media/logo.jpg" alt="School Logo" class="logo">
+      <nav>
+        <span class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></span>
+        <ul id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="primaryschool.html">Primary School</a></li>
+          <li><a href="highschool.html">High School</a></li>
+          <li><a href="applicationform.html">Admissions</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="documents-section">
+    <h3>Required Documents for Enrollment</h3>
+    <div class="documents-grid">
+        <a href="media/application4.pdf" download class="document-card">
+            <div class="document-content">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4 class="document-title">Grade R Application Form</h4>
+                <div class="document-meta">
+                  <span class="document-type">PDF Document</span>
+                  <span class="download-btn"><i class="fas fa-download"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+    
+          <a href="media/application.pdf" download class="document-card">
+            <div class="document-content">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4 class="document-title">Grade 1-3 Application Form</h4>
+                <div class="document-meta">
+                  <span class="document-type">PDF Document</span>
+                  <span class="download-btn"><i class="fas fa-download"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+    
+          <a href="media/application2.pdf" download class="document-card">
+            <div class="document-content">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4 class="document-title">Grade 4-6 Application Form</h4>
+                <div class="document-meta">
+                  <span class="document-type">PDF Document</span>
+                  <span class="download-btn"><i class="fas fa-download"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+    
+          <a href="media/application3.pdf" download class="document-card">
+            <div class="document-content">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4 class="document-title">Grade 7-9 Application Form</h4>
+                <div class="document-meta">
+                  <span class="document-type">PDF Document</span>
+                  <span class="download-btn"><i class="fas fa-download"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+    
+          <a href="media/application5.pdf" download class="document-card">
+            <div class="document-content">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4 class="document-title">Grade 10-11 Application Form</h4>
+                <div class="document-meta">
+                  <span class="document-type">PDF Document</span>
+                  <span class="download-btn"><i class="fas fa-download"></i></span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+  <div class="container">
+    <h2>Enrollment Form</h2>
+    <p>Please fill in the form below to enroll your child at GlenMark Christian School.</p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfV-sX6XJezmekFO-JzaxQcM7W12rM44BvOP0Yoq_2-KDI-UQ/viewform?embedded=true" 
+            width="100%" 
+            height="1357" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            style="border-radius: 12px; margin-top: 1.5rem;">
+      Loading…
+    </iframe>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>123 Education Street<br>Glenmark, 12345</p>
+          <p>Phone: (012) 345-6789</p>
+          <p>Email: info@glenmark.edu</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="schoolfees.html">Fee Structure</a></li>
+            <li><a href="resources.html">Learning Resources</a></li>
+            <li><a href="codeofconduct.html">School Policies</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-media">
+            <a href="https://www.instagram.com/glenmark_christian_school" target="_blank" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100084432864167" target="_blank" class="social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.tiktok.com/@glenmarkchristian" target="_blank" class="social-icon">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; text-align: center">&copy; 2025 Glenmark Christian School. All Rights Reserved.</p>
+      
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('nav-menu');
+      navMenu.classList.toggle('show');
+    }
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('nav-menu').classList.remove('show');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const navMenu = document.getElementById('nav-menu');
+      const menuIcon = document.querySelector('.menu-icon');
+      
+      if (!menuIcon.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>

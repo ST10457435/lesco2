@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educational Resources - Glenmark Christian School</title>
+  <link rel="icon" type="image/png" href="media/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #00509E;
+      --secondary-color: #FFD700;
+      --accent-color: #FF6B6B;
+      --text-dark: #2C3E50;
+      --text-light: #F8F9FA;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(rgba(0, 80, 158, 0.9), rgba(0, 80, 158, 0.9)),
+                  url('media/header-bg.jpg') center/cover;
+      color: var(--text-light);
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: none;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Resource Cards */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .grade-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .grade-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .grade-header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: -1.5rem -1.5rem 1.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .resource-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-left: 3px solid var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+
+    .resource-item:hover {
+      background: #f8f9fa;
+      border-left-width: 6px;
+    }
+
+    .resource-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .resource-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    /* Add this to your existing footer CSS */
+.footer-section a {
+    color: var(--text-light) !important; /* White color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color) !important; /* Gold color on hover */
+    text-decoration: underline;
+}
+    /* Footer Styles */
+    footer {
+      background: var(--primary-color);
+      color: var(--text-light);
+      padding: 4rem 2rem;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .header-content {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="media/logo.jpg" alt="School Logo" class="logo">
+      <nav>
+        <span class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></span>
+        <ul id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="primaryschool.html">Primary School</a></li>
+          <li><a href="highschool.html">High School</a></li>
+          <li><a href="applicationform.html">Admissions</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Educational Resources for Grades R-12</h1>
+    <p>Explore comprehensive learning materials and resources for all grade levels:</p>
+
+    <div class="resource-grid">
+      <!-- Grade R -->
+      <div class="grade-card">
+        <div class="grade-header">
+          <h2>Grade R</h2>
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <a href="https://www.education.gov.za/Curriculum/LearningandTeachingSupportMaterials%28LTSM%29/Workbooks/GradeRResourceKit.aspx" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-puzzle-piece resource-icon"></i>
+              <div>
+                <h3>Grade R Resource Kit</h3>
+                <p>Official DBE learning materials</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://wcedeportal.co.za/resources-to-support-grade-r-learning-and-teaching" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-school resource-icon"></i>
+              <div>
+                <h3>WCED ePortal Resources</h3>
+                <p>Interactive learning materials</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grades 1-3 -->
+      <div class="grade-card">
+        <div class="grade-header">
+          <h2>Grades 1-3</h2>
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <a href="https://www.education.gov.za/Curriculum/LearningandTeachingSupportMaterials%28LTSM%29.aspx" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-book-open resource-icon"></i>
+              <div>
+                <h3>DBE Learning Materials</h3>
+                <p>Official curriculum resources</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://wcedeportal.co.za/edbuddies-for-all-grades-and-subjects" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-users resource-icon"></i>
+              <div>
+                <h3>EdBuddies Resources</h3>
+                <p>Peer learning support</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grades 4-6 -->
+      <div class="grade-card">
+        <div class="grade-header">
+          <h2>Grades 4-6</h2>
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <a href="https://www.education.gov.za/Curriculum/LearningandTeachingSupportMaterials%28LTSM%29.aspx" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-atom resource-icon"></i>
+              <div>
+                <h3>Intermediate Phase Resources</h3>
+                <p>Subject-specific materials</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://wcedeportal.co.za/edbuddies-for-all-grades-and-subjects" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-chalkboard-teacher resource-icon"></i>
+              <div>
+                <h3>Interactive Lessons</h3>
+                <p>Digital classroom resources</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grades 7-9 -->
+      <div class="grade-card">
+        <div class="grade-header">
+          <h2>Grades 7-9</h2>
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <a href="https://www.education.gov.za/Curriculum/LearningandTeachingSupportMaterials%28LTSM%29.aspx" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-microscope resource-icon"></i>
+              <div>
+                <h3>Senior Phase Resources</h3>
+                <p>Comprehensive subject guides</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://wcedeportal.co.za/edbuddies-for-all-grades-and-subjects" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-rocket resource-icon"></i>
+              <div>
+                <h3>Advanced Learning Tools</h3>
+                <p>STEM resources</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grades 10-12 -->
+      <div class="grade-card">
+        <div class="grade-header">
+          <h2>Grades 10-12</h2>
+        </div>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <a href="https://www.education.gov.za/Curriculum/NationalSeniorCertificate%28NSC%29Examinations/NSCPastExaminationpapers.aspx" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-file-alt resource-icon"></i>
+              <div>
+                <h3>DBE Past Papers</h3>
+                <p>Official NSC exams</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://www.saexampapers.co.za/" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-clipboard-list resource-icon"></i>
+              <div>
+                <h3>SA Exam Papers</h3>
+                <p>Comprehensive question banks</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://www.testpapers.co.za/gr12-subjects" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-book resource-icon"></i>
+              <div>
+                <h3>Testpapers</h3>
+                <p>Subject-specific practice</p>
+              </div>
+            </a>
+          </li>
+          <li class="resource-item">
+            <a href="https://www.sapapers.co.za/" 
+               class="resource-link" target="_blank">
+              <i class="fas fa-graduation-cap resource-icon"></i>
+              <div>
+                <h3>SA Papers</h3>
+                <p>Additional practice material</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>123 Education Street<br>Glenmark, 12345</p>
+        <p>Phone: (012) 345-6789</p>
+        <p>Email: info@glenmark.edu</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="schoolfees.html">Fee Structure</a></li>
+          <li><a href="resources.html">Learning Resources</a></li>
+          <li><a href="codeofconduct.html">School Policies</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-media">
+          <a href="https://www.instagram.com/glenmark_christian_school" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100084432864167" target="_blank" class="social-icon">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.tiktok.com/@glenmarkchristian" target="_blank" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 2rem; text-align: center">&copy; 2025 Glenmark Christian School. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('nav-menu');
+      navMenu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
