@@ -105,6 +105,7 @@
       background: white;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       border-radius: 10px;
+      overflow-x: hidden;
     }
 
     .fee-card {
@@ -124,6 +125,7 @@
       width: 100%;
       border-collapse: collapse;
       position: relative;
+      table-layout: fixed;
     }
 
     .fee-table thead {
@@ -141,6 +143,20 @@
       padding: 1.5rem;
       border-bottom: 1px solid #eee;
       transition: all 0.3s ease;
+    }
+
+    /* Column Width Definitions */
+    .fee-table th:nth-child(1),
+    .fee-table td:nth-child(1) {
+      width: 60%;
+    }
+    .fee-table th:nth-child(2),
+    .fee-table td:nth-child(2) {
+      width: 20%;
+    }
+    .fee-table th:nth-child(3),
+    .fee-table td:nth-child(3) {
+      width: 20%;
     }
 
     .fee-table tbody tr {
@@ -238,9 +254,26 @@
         padding: 0 1rem;
       }
 
+      .container {
+        padding: 20px;
+        margin: 20px auto;
+      }
+
       .fee-table {
+        display: table;
+        overflow-x: visible;
+      }
+
+      .fee-table th,
+      .fee-table td {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .fee-badge {
         display: block;
-        overflow-x: auto;
+        margin: 0.5rem 0 0 0;
+        width: fit-content;
       }
     }
   </style>
@@ -349,3 +382,7 @@
   </script>
 </body>
 </html>
+
+  
+     
+
